@@ -7,9 +7,10 @@
     <link href="https://fonts.cdnfonts.com/css/century-gothic-paneuropean" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="css/hover.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.5/dist/alpine.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="script.js"></script>
     <style>
         body {
             font-family: 'Century Gothic Paneuropean', sans-serif;
@@ -19,58 +20,154 @@
 
 </head>
 
-<body>
-    <header>
-        <nav class="fixed top-0 w-full z-50 py-6 px-4">
-            <div class="container mx-auto flex justify-between items-center lg:max-w-7xl">
-                <!-- LOGO -->
-                <a href="/" class="w-40">
-                    <img src="images/logo.png" alt="Lux-design logo" class="object-cover object-center">
-                </a>
-                <!-- nav-links -->
-                <ul class=" lg:flex gap-16 text-white">
-                    <li><a href="" class="hover:text-[#ff7b02] transition-colors"></a> Accueil</li>
-                    <li><a href="" class="hover:text-[#ff7b02] transition-colors">A propos</a></li>
-                    <li><a href="" class="hover:text-[#ff7b02] transition-colors">Services</a></li>
-                    <li><a href="" class="hover:text-[#ff7b02] transition-colors">Contact</a></li>
+<body class="font-sans leading-relaxed">
+
+    <!-- Navbar Responsive -->
+    <nav class="fixed top-0 left-0 w-full bg-[#0A3764] shadow-lg z-50" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 lg:px-8 relative">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="#accueil"><img src="images/logo.png" alt="" class="h-8 "></a>
+
+                <!-- Menu de navigation (desktop) -->
+                <ul class="hidden md:flex space-x-8">
+                    <li>
+                        <a href="#accueil"
+                            class="nav-link relative px-4 py-2 text-white font-medium transition-all duration-300 hover:text-[#d9625b] group">
+                            Accueil
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 hover:text-[#d9625b] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#services"
+                            class="nav-link relative px-4 py-2 text-white font-medium transition-all duration-300 hover:text-[#d9625b] group">
+                            Services
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d9625b] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#apropos"
+                            class="nav-link relative px-4 py-2 text-white font-medium transition-all duration-300 hover:text-[#d9625b] group">
+                            À propos
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d9625b] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact"
+                            class="nav-link relative px-4 py-2 text-white font-medium transition-all duration-300 hover:text-[#d9625b] group">
+                            Contact
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#d9625b] transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </li>
                 </ul>
 
+                <!-- Menu hamburger (mobile) -->
+                <button id="hamburger"
+                    class="md:hidden flex flex-col space-y-1.5 p-2 hover:scale-110 transition-transform duration-300">
+                    <span
+                        class="hamburger-line w-6 h-0.5 bg-white rounded transition-all duration-300 ease-in-out"></span>
+                    <span
+                        class="hamburger-line w-6 h-0.5 bg-white rounded transition-all duration-300 ease-in-out"></span>
+                    <span
+                        class="hamburger-line w-6 h-0.5 bg-white rounded transition-all duration-300 ease-in-out"></span>
+                </button>
+
             </div>
-        </nav>
-    </header>
 
+            <!-- Menu mobile -->
+            <div id="mobile-menu"
+                class="hidden absolute top-0 z-100 left-0 w-full bg-[#0A3764]/10 h-screen shadow-xl animate__animated ">
 
+                <div class="flex justify-between bg-[#0A3764] items-center p-4">
 
-    <main>
-        <!-- hero section -->
-        <section class="relative h-screen w-full bg-cover bg-center bg-no-repeat flex items-center px-4 text-[#F5F7FA]"
-            style="background-image: linear-gradient(to bottom right, rgba(31, 41, 55, 0.9), rgba(75, 85, 99, 0.8)), url('https://img.freepik.com/premium-photo/graphic-designer-creativity-editor-ideas-designer-concept_53876-60406.jpg?uid=R191311466&ga=GA1.1.1373891776.1741798452&semt=ais_hybrid&w=740');">
-            <!-- Ton contenu ici -->
-            <div class="container mx-auto  lg:max-w-7xl sm:px-10">
+                    <ul class="py-6 space-y-2">
+                        <li class="">
+                            <a href="#accueil"
+                                class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
+                                Accueil
+                            </a>
+                        </li>
+                        </a>
+                        </li>
+                        <li class="">
+                            <a href="#services"
+                                class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
+                                Services
+                            </a>
+                        </li>
+                        <a href="#apropos"
+                            class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
+                            À propos
+                        </a>
+                        </li>
+                        </a>
+                        </li>
+                        <li class="">
+                            <a href="#contact"
+                                class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- boutton close -->
+                    <button id="close-mobile-menu" class=" p-2 hidden self-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="pt-10">
+        <section id="accueil" class="h-screen relative ">
+            <!-- image en background avec dégradé -->
+            <img src="images/hero-image.jpg" alt="Image de fond" class="w-full h-full object-cover  " />
+            <!-- ecrire au dessus -->
+
+            <div class="absolute inset-0 z-10 flex flex-col justify-center text-white max-w-6xl mx-auto px-4 lg:px-8">
                 <h1
-                    class="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl py-6 animate__animated animate__backInRight">
+                    class="font-bold text-4xl relative sm:text-5xl md:text-6xl lg:text-7xl py-6 animate__animated animate__backInRight">
                     Graphisme Web Marketing
+                    <span
+                        class="bg-[#e67369]/80 p-5 w-5 h-5 rounded-full  left-0 absolute inset-0 z-10  -top-10"></span>
+
                 </h1>
                 <p class="max-w-lg pt-4 pb-10">LuxDesign vous propulse dans le digital avec des visuels percutants, des
                     sites sur-mesure et des stratégies
                     qui convertissent.</p>
-                <a href=""
-                    class="bg-[#0A3764] flex w-70 gap-x-3 items-center px-6 py-4 rounded-lg shadow-lg font-semibold text-xl">
-                    Voir nos réalisations
-                    <img src="images/Right.png" alt="" width="16px">
-                </a>
 
+                <div class="flex">
+                    <a href="#portfolio"
+                        class="flex  gap-x-3 items-center bg-[#e67369] hover:bg-[#d9625b] text-white font-semibold py-2 px-4 rounded shadow-lg font-semibold ] transition-colors duration-300">
+                        Découvrir
+                        <img src="images/Right.png" alt="" width="16px">
+                    </a>
+                </div>
+
+                <!-- <button class="bg-[#e67369] hover:bg-[#d9625b] text-white font-semibold py-2 px-4 rounded">
+                    <a href="">Découvrir</a>
+                </button> -->
             </div>
         </section>
 
-        <!-- Section valeurs -->
-        <section class="bg-[#0A3764] text-[#F5F7FA] px-4 sm:px-10 py-15">
-            <div class="container mx-auto lg:max-w-7xl flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-15  ">
+        <!-- NOS VALEURS -->
+        <section id="valeurs" class="py-35 flex items-center justify-center bg-[#e67369]">
+            <div
+                class="container text-white max-w-6xl mx-auto px-4 lg:px-8 flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-15  ">
                 <div>
                     <img src="images/design (2).png" alt=""
                         class="transition-transform duration-300 ease-in-out hover:scale-140 w-24">
-                    <h3
-                        class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110 hover:text-[#9B9B3B] md:text-4xl">
+                    <h3 class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110 md:text-4xl">
                         Créativité</h3>
                     <p class="text-justify lg:max-w-3xl">Nous donnons vie à vos idées à travers des concepts visuels
                         uniques. Chaque design est pensé pour captiver,
@@ -80,7 +177,7 @@
                     <img src="images/technical-skills.png" alt=""
                         class="transition-transform duration-300 ease-in-out hover:scale-140 w-24">
                     <h3
-                        class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110 hover:text-[#9B9B3B] md:text-4xl">
+                        class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110  md:text-4xl">
                         Technique</h3>
                     <p class="text-justify lg:max-w-3xl">Derrière chaque émotion visuelle se cache une architecture
                         digitale irréprochable. Nos solutions allient
@@ -90,7 +187,7 @@
                     <img src="images/reactivite.png" alt=""
                         class="transition-transform duration-300 ease-in-out hover:scale-140 w-24">
                     <h3
-                        class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110 hover:text-[#9B9B3B] md:text-4xl">
+                        class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110  md:text-4xl">
                         Réactivité</h3>
                     <p class="text-justify lg:max-w-3xl">Disponibles, à l’écoute et rigoureux, nous répondons à vos
                         demandes avec efficacité. Respect des délais,
@@ -99,14 +196,15 @@
             </div>
         </section>
 
-        <!-- Section à propos -->
-        <section class="px-4 py-20 sm:px-10 ">
+        <!-- À PROPOS -->
+        <section id="apropos" class="min-h-screen px-4 py-20 sm:px-10 ">
 
             <div>
-                <h2 class="text-4xl font-semibold text-[#0A3764] pb-6 text-center">À PROPOS</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-[#0A3764] pb-16 text-center">L’histoire qui nous a
+                    conduits jusqu’ici.</h2>
             </div>
 
-            <div class="container mx-auto lg:max-w-7xl grid grid-cols-1 lg:grid-cols-2 itms-center">
+            <div class="container mx-auto lg:max-w-6xl grid grid-cols-1 lg:grid-cols-2 itms-center">
                 <div>
                     <img src="images/erasebg-transformed (1).png" alt="LuxDesign Image" class="rounded" />
                 </div>
@@ -141,6 +239,75 @@
                     </div>
                 </div>
             </div>
+
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services" class="min-h-screen px-4 sm:px-10 bg-[#f9f9f9] py-20">
+            <div class="text-[#0A3764] container mx-auto lg:max-w-6xl">
+                <h3
+                    class="p-4 mb-4 text-lg text-center text-[#0A3764] leading-tight first-letter:capitalize font-medium ">
+                    NOS SERVICES</h3>
+                <p class="text-4xl text-center sm:text-5xl font-semibold lg:max-w-3xl mx-auto sm:text-center pb-15">
+                    Voici comment <span class="font-black">nous pouvons vous aider</span>.
+                </p>
+            </div>
+
+            <div class="container lg:max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 text-white">
+                <div
+                    class="bg-[#0A3764] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#e67369] hover:scale-110">
+                    <img src="images/sketch.png" alt="" width="64px">
+                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Studio Graphique et Design</h3>
+                    <p>
+                        Nous concevons des identités visuelles fortes et des supports graphiques sur mesure pour
+                        sublimer votre
+                        image de
+                        marque.
+                    </p>
+                </div>
+                <div
+                    class="bg-[#041323] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#e67369] hover:scale-110">
+                    <img src="images/social-media-management.png" alt="" width="64px">
+                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Marketing Digital</h3>
+                    <p>Nous élaborons des stratégies de marketing digital efficaces pour développer votre présence en
+                        ligne et
+                        atteindre vos objectifs business.</p>
+                </div>
+                <div
+                    class="bg-[#0A3764] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#e67369] hover:scale-110">
+                    <img src="images/social-media.png" alt="" width="64px">
+                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Social Media</h3>
+                    <p>Nous gérons vos réseaux sociaux de manière stratégique pour fédérer une communauté engagée et
+                        valoriser
+                        votre image de marque.</p>
+                </div>
+                <div
+                    class="bg-[#041323] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#e67369] hover:scale-110">
+                    <img src="images/seo.png" alt="" width="64px">
+                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Référencement Naturel</h3>
+                    <p>Audit, optimisation technique, contenu et netlinking : nous activons tous les leviers pour
+                        améliorer votre
+                        positionnement SEO.</p>
+                </div>
+                <div
+                    class="bg-[#0A3764] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#e67369] hover:scale-110">
+                    <img src="images/Dev.png" alt="" width="64px">
+                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Solutions digitales</h3>
+                    <p>
+                        Nous concevons des sites web adaptées à vos besoins, et proposons également des formations en
+                        développement pour vous rendre autonome.
+                    </p>
+                </div>
+                <div
+                    class="bg-[#041323] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#e67369] hover:scale-110">
+                    <img src="images/camera.png" alt="" width="64px">
+                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Audio Visuel</h3>
+                    <p>Nous produisons des contenus audiovisuels de qualité pour valoriser votre image, transmettre vos
+                        messages.
+                    </p>
+                </div>
+            </div>
+
         </section>
 
         <!-- MES Réalisations -->
@@ -153,19 +320,18 @@
                         class="p-4 mb-4 text-lg text-center text-[#0A3764] leading-tight first-letter:capitalize font-medium ">
                         NOS REALISATIONS</h3>
                     <p
-                        class="text-4xl text-center sm:text-justify sm:text-5xl font-semibold lg:max-w-5xl mx-auto sm:text-center pb-15">
+                        class="text-4xl text-center sm:text-justify sm:text-5xl font-semibold lg:max-w-5xl mx-auto sm:text-center md:pb-15">
                         Chaque <span class=" font-black">projet</span> est une <span class="font-black">histoire</span>.
                         Voici
                         ceux que nous avons eu le plaisir de concrétiser.</p>
                 </div>
-                <div
-                    class="container mx-auto lg:max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden md:grid">
+                <div class="container mx-auto lg:max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 hidden md:grid">
                     <!-- card -->
                     <div class="relative group   shadow-lg  overflow-hidden">
                         <img class="w-full h-full group-hover:h-64 object-cover transition-all delay-150 duration-300 ease"
-                            src="images/img1.png" />
+                            src="images/9f280f38-537f-43d4-aec2-b44d43634b3a.png" />
                         <div
-                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 transition-all delay-150 duration-300 ease dark:bg-[#0A3764]">
+                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 group-hover:h-85 transition-all delay-150 duration-300 ease dark:bg-[#0A3764]">
                             <div class="p-6">
                                 <div class="capitalize flex items-center justify-between gap-4">
                                     <div>
@@ -182,9 +348,9 @@
                     <!-- card -->
                     <div class="relative group shadow-lg  overflow-hidden">
                         <img class="w-full h-full group-hover:h-64 object-cover  transition-all delay-150 duration-300 ease"
-                            src="images/img2.png" />
+                            src="images/beaufort.png" />
                         <div
-                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 transition-all delay-150 duration-300 ease">
+                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 group-hover:h-85 transition-all delay-150 duration-300 ease">
                             <div class="p-6">
                                 <div class="capitalize flex items-center justify-between gap-4">
                                     <div>
@@ -199,9 +365,9 @@
                     <!-- card -->
                     <div class="relative group  shadow-lg  overflow-hidden">
                         <img class="w-full h-full group-hover:h-64 object-cover  transition-all delay-150 duration-300 ease"
-                            src="images/img3.png" />
+                            src="images/Coming-soon-Flyer.png" />
                         <div
-                            class="bg-[#0A3764]   w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0   transition-all delay-150 duration-300 ease">
+                            class="bg-[#0A3764]   w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 group-hover:h-85 transition-all delay-150 duration-300 ease">
                             <div class="p-6">
                                 <div class="capitalize flex items-center justify-between gap-4">
                                     <div>
@@ -217,9 +383,9 @@
                     <!-- card -->
                     <div class="relative group shadow-lg  overflow-hidden">
                         <img class="w-full h-full group-hover:h-64 object-cover  transition-all delay-150 duration-300 ease"
-                            src="images/Téquila-visuel-debrifer.png" />
+                            src="images/DOPPEL-MUNICH-debrifer.png" />
                         <div
-                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 transition-all delay-150 duration-300 ease">
+                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 group-hover:h-95 transition-all delay-150 duration-300 ease">
                             <div class="p-6">
                                 <div class="capitalize flex items-center justify-between gap-4">
                                     <div>
@@ -235,9 +401,9 @@
                     <!-- card -->
                     <div class="relative group shadow-lg  overflow-hidden">
                         <img class="w-full h-full group-hover:h-64 object-cover  transition-all delay-150 duration-300 ease"
-                            src="images/img24.png" />
+                            src="images/YOUZOU-2-ok-.png" />
                         <div
-                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 transition-all delay-150 duration-300 ease">
+                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 group-hover:h-45 transition-all delay-150 duration-300 ease">
                             <div class="p-6">
                                 <div class="capitalize flex items-center justify-between gap-4">
                                     <div>
@@ -252,9 +418,9 @@
                     <!-- card -->
                     <div class="relative group shadow-lg  overflow-hidden">
                         <img class="w-full h-full group-hover:h-64 object-cover  transition-all delay-150 duration-300 ease"
-                            src="images/POSSOTOME--debrifer.png" />
+                            src="images/YOUZOU-okay-Récupéré-Récupéré.png" />
                         <div
-                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 transition-all delay-150 duration-300 ease">
+                            class="bg-[#0A3764] w-full h-40 absolute left-0 bottom-0 -mb-44 group-hover:mb-0 group-hover:h-45 transition-all delay-150 duration-300 ease">
                             <div class="p-6">
                                 <div class="capitalize flex items-center justify-between gap-4">
                                     <div>
@@ -271,224 +437,104 @@
             </div>
 
             <!-- Secion réalisations qui s'affiche sur mobile unquement-->
-
-            <div class="flex items-center justify-center px-4 sm:px-10 md:hidden">
-                <div class="relative  container mx-auto lg:max-w-7xl ">
-                    <!-- Carousel wrapper -->
-                    <div class="overflow-hidden relative ">
-                        <div class="flex transition-transform duration-500 ease-in-out transform" id="carousel">
-                            <!-- Slide 1 -->
-                            <div class="min-w-full">
-                                <img src="images/img1.png" alt="Slide 1" class="w-full h-full object-cover" />
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="min-w-full">
-                                <img src="images/img2.png" alt="Slide 2" class="w-full h-full object-cover" />
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="min-w-full">
-                                <img src="images/img3.png" alt="Slide 3" class="w-full h-full object-cover" />
-                            </div>
-                            <!-- Slide 4 -->
-                            <div class="min-w-full">
-                                <img src="images/Téquila-visuel-debrifer.png" alt="Slide 3"
-                                    class="w-full h-full object-cover" />
-                            </div>
-                            <!-- Slide 5-->
-                            <div class="min-w-full">
-                                <img src="images/img24.png" alt="Slide 3" class="w-full h-full object-cover" />
-                            </div>
-                            <!-- Slide 6 -->
-                            <div class="min-w-full">
-                                <img src="images/POSSOTOME--debrifer.png" alt="Slide 3"
-                                    class="w-full h-full object-cover" />
-                            </div>
-                        </div>
+            <div class="relative w-full max-w-xl mx-auto overflow-hidden md:hidden">
+                <div class="carousel flex transition-transform duration-500">
+                    <!-- Carousel items -->
+                    <div class="carousel-item min-w-full">
+                        <img src="images/DOPPEL-MUNICH-debrifer.png" alt="Carousel Image 1"
+                            class="h-full w-auto object-contain">
                     </div>
+                    <div class="carousel-item min-w-full">
+                        <img src="images/YOUZOU-2-ok-.png" alt="Carousel Image 2" class="h-full w-auto object-contain">
+                    </div>
+                    <div class="carousel-item min-w-full ">
+                        <img src="images/YOUZOU-okay-Récupéré-Récupéré.png" alt="Carousel Image 3"
+                            class="h-full w-auto object-contain">
+                    </div>
+                    <div class="carousel-item min-w-full ">
+                        <img src="images/beaufort.png" alt="Carousel Image 3" class="h-full w-auto object-contain">
+                    </div>
+                    <div class="carousel-item min-w-full ">
+                        <img src="images/Coming-soon-Flyer.png" alt="Carousel Image 3"
+                            class="h-full w-auto object-contain">
+                    </div>
+                    <div class="carousel-item min-w-full ">
+                        <img src="images/9f280f38-537f-43d4-aec2-b44d43634b3a.png" alt="Carousel Image 3"
+                            class="h-full w-auto object-contain">
+                    </div>
+                </div>
 
-                    <!-- Navigation buttons -->
-                    <button
-                        class="absolute top-1/2 left-0 transform -translate-y-1/2 p-3 bg-gray-700 bg-opacity-50 rounded-full text-white hover:bg-opacity-75 focus:outline-none"
-                        onclick="scrollCarousel(-1)">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
+                <!-- Carousel controls -->
+                <div class="absolute inset-y-0 left-0 flex items-center justify-start pl-4">
+                    <button id="prevBtn"
+                        class="carousel-control-prev bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
                             </path>
                         </svg>
                     </button>
-                    <button
-                        class="absolute top-1/2 right-0 transform -translate-y-1/2 p-3 bg-gray-700 bg-opacity-50 rounded-full text-white hover:bg-opacity-75 focus:outline-none"
-                        onclick="scrollCarousel(1)">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center justify-end pr-4">
+                    <button id="nextBtn"
+                        class="carousel-control-next bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
                         </svg>
                     </button>
                 </div>
-
             </div>
         </section>
 
-        <!-- Nos services -->
-        <section class="px-4 sm:px-10 bg-[#f9f9f9] py-20" id="services">
-            <div class="text-[#0A3764] container mx-auto lg:max-w-7xl">
-                <h3
-                    class="p-4 mb-4 text-lg text-center text-[#0A3764] leading-tight first-letter:capitalize font-medium ">
-                    NOS SERVICES</h3>
-                <p class="text-4xl text-justify sm:text-5xl font-semibold lg:max-w-3xl mx-auto sm:text-center pb-15">
-                    Voici comment <span class="font-black">nous pouvons vous aider</span>.
-                </p>
-            </div>
+        <div class="min-h-screen bg-gray-800 py-6 flex flex-col justify-center sm:py-42" id="contact">
+            <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+                <div
+                    class="absolute inset-0 bg-[#d9625b] shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+                </div>
+                <div class="text-white relative px-4 py-10 bg-indigo-400 shadow-lg sm:rounded-3xl sm:p-20">
 
-            <div class="container lg:max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 text-white text-justify">
-                <div
-                    class="bg-[#0A3764] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#9B9B3B] hover:scale-110">
-                    <img src="images/sketch.png" alt="" width="64px">
-                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Studio Graphique et Design</h3>
-                    <p>
-                        Nous concevons des identités visuelles fortes et des supports graphiques sur mesure pour
-                        sublimer votre
-                        image de
-                        marque.
-                    </p>
-                </div>
-                <div
-                    class="bg-[#041323] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#9B9B3B] hover:scale-110">
-                    <img src="images/social-media-management.png" alt="" width="64px">
-                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Marketing Digital</h3>
-                    <p>Nous élaborons des stratégies de marketing digital efficaces pour développer votre présence en
-                        ligne et
-                        atteindre vos objectifs business.</p>
-                </div>
-                <div
-                    class="bg-[#0A3764] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#9B9B3B] hover:scale-110">
-                    <img src="images/social-media.png" alt="" width="64px">
-                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Social Media</h3>
-                    <p>Nous gérons vos réseaux sociaux de manière stratégique pour fédérer une communauté engagée et
-                        valoriser
-                        votre image de marque.</p>
-                </div>
-                <div
-                    class="bg-[#041323] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#9B9B3B] hover:scale-110">
-                    <img src="images/seo.png" alt="" width="64px">
-                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Référencement Naturel</h3>
-                    <p>Audit, optimisation technique, contenu et netlinking : nous activons tous les leviers pour
-                        améliorer votre
-                        positionnement SEO.</p>
-                </div>
-                <div
-                    class="bg-[#0A3764] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#9B9B3B] hover:scale-110">
-                    <img src="images/Dev.png" alt="" width="64px">
-                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Solutions digitales</h3>
-                    <p>
-                        Nous concevons des sites web adaptées à vos besoins, et proposons également des formations en
-                        développement pour vous rendre autonome.
-                    </p>
-                </div>
-                <div
-                    class="bg-[#041323] px-15 py-15 transition-all duration-300 ease-in-out hover:bg-[#9B9B3B] hover:scale-110">
-                    <img src="images/camera.png" alt="" width="64px">
-                    <h3 class="py-4 font-bold text-2xl md:text-3xl">Audio Visuel</h3>
-                    <p>Nous produisons des contenus audiovisuels de qualité pour valoriser votre image, transmettre vos
-                        messages.
-                    </p>
-                </div>
-            </div>
-        </section>
+                    <div class="text-center pb-6">
+                        <h1 class="text-3xl">Contactez-Nous</h1>
 
-        <!-- Avis clients -->
-        <section class="text-gray-600 body-font px-4 sm:px-10 py-20 text-white bg-[#e2e6eeb6]">
-            <div class="container mx-auto lg:max-w-7xl">
-
-                <div class="text-[#0A3764] container mx-auto lg:max-w-7xl">
-                    <h3
-                        class="p-4 mb-4 text-lg text-center text-[#0A3764] leading-tight first-letter:capitalize font-medium ">
-                        AVIS CLIENTS</h3>
-                    <p
-                        class="text-4xl max-w-prose text-center   sm:text-5xl font-semibold  lg:max-w-3xl mx-auto sm:text-center pb-15">
-                        Ils nous ont fait <span class="font-black">confiance</span>.Découvrez ce qu’ils pensent de notre
-                        collaboration.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                    <!--AVIS-1  -->
-                    <div>
-                        <div class="h-full bg-[#0A3764] p-8 rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                class="block w-5 h-5 text-gray-400 mb-4" viewBox="0 0 975.036 975.036">
-                                <path
-                                    d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
-                                </path>
-                            </svg>
-                            <p class="leading-relaxed mb-6">Grâce à leur gestion précise de nos réseaux sociaux, nous
-                                avons doublé notre taux d’engagement en 3
-                                mois. Les visuels sont pros, les textes impactants… rien à redire.</p>
-                            <a class="inline-flex items-center">
-                                <img alt="testimonial" src="images/avis1.png"
-                                    class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
-                                <span class="flex-grow flex flex-col pl-4">
-                                    <span class="title-font font-medium font-semibold"> Karim T.</span>
-                                    <span class="text-sm">Responsable communication dans l’événementiel</span>
-                                </span>
-                            </a>
-                        </div>
+                        <p class="text-gray-300">
+                            Une idée vaut mieux partagée : discutons ensemble
+                        </p>
                     </div>
 
-                    <!--AVIS-2  -->
-                    <div>
-                        <div class="h-full bg-[#0A3764] p-8 rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                class="block w-5 h-5 text-gray-400 mb-4" viewBox="0 0 975.036 975.036">
-                                <path
-                                    d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
-                                </path>
-                            </svg>
-                            <p class="leading-relaxed mb-6">LuxDesign a su capturer parfaitement l’univers de ma marque.
-                                Le logo, les packagings et l’identité
-                                visuelle reflètent à 100% mes valeurs. Je reçois énormément de compliments </p>
-                            <a class="inline-flex items-center">
-                                <img alt="testimonial" src="images/avis2.png"
-                                    class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
-                                <span class="flex-grow flex flex-col pl-4">
-                                    <span class="title-font font-medium  font-semibold">Sophie M</span>
-                                    <span class="text-sm"> Fondatrice de marque de cosmétiques</span>
-                                </span>
-                            </a>
+                    <form action="" method="post">
+
+                        <input
+                            class="shadow mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="text" placeholder="Nom" name="name">
+
+                        <input
+                            class="shadow mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="email" placeholder="Email" name="email">
+
+                        <input
+                            class="shadow mb-4 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="text" placeholder="Sujet" name="_subject">
+
+                        <textarea
+                            class="shadow mb-4 min-h-0 appearance-none border rounded h-64 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="text" placeholder="Tapez votre message ici..." name="message"
+                            style="height: 121px;"></textarea>
+
+                        <div class="flex justify-between">
+                            <input
+                                class="shadow bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="submit" value="Envoyer ➤">
+                            <input
+                                class="shadow bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="reset">
                         </div>
-                    </div>
 
-                    <!--AVIS-3  -->
-                    <div>
-                        <div class="h-full bg-[#0A3764] p-8 rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                class="block w-5 h-5 text-gray-400 mb-4" viewBox="0 0 975.036 975.036">
-                                <path
-                                    d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
-                                </path>
-                            </svg>
-                            <p class="leading-relaxed mb-6">Mon site stagnait, invisible sur Google. Après leur audit
-                                SEO et leurs optimisations, j’ai vu le trafic
-                                grimper et les demandes de contact affluer. Du concret, enfin.</p>
-                            <a class="inline-flex items-center">
-                                <img alt="testimonial" src="images/avis3.png"
-                                    class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
-                                <span class="flex-grow flex flex-col pl-4">
-                                    <span class="title-font font-medium font-semibold">Aïcha B </span>
-                                    <span class=" text-sm">Consultante marketing freelance</span>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-
-
+                    </form>
                 </div>
+
             </div>
-        </section>
-
-
-        <section>
+        </div>
+        <section class="hidden md:block">
 
             <div class="fixed left-3 bottom-10 pb-4 flex flex-col gap-3 container mx-auto lg:max-w-7xl">
 
@@ -520,24 +566,42 @@
         </section>
     </main>
 
-    <footer class="bg-[#0A3764] text-white py-6">
+    <footer class="bg-[#d9625b] text-white py-6">
         <p class="text-center">© 2024 LuxDesign FR Inc. All Rights Reserved.</p>
     </footer>
 
-
-    <!-- JAVASCRIPT -->
-
     <script>
-        let currentIndex = 0;
+        const bouttonhamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const carousel = document.querySelector(".carousel");
+        const slides = document.querySelectorAll(".carousel-item");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
 
-        function scrollCarousel(direction) {
-            const carousel = document.getElementById("carousel");
-            const totalSlides = carousel.children.length;
-            currentIndex =
-                (currentIndex + direction + totalSlides) % totalSlides;
-            carousel.style.transform = `translateX(-${currentIndex * 100
-                }%)`;
+        bouttonhamburger.addEventListener('click', () => {
+            closeMobileMenu.classList.toggle('hidden');
+            bouttonhamburger.classList.toggle('hidden');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('animate__fadeInDown');
+
+        });
+        closeMobileMenu.addEventListener('click', () => {
+            closeMobileMenu.classList.toggle('hidden');
+            bouttonhamburger.classList.toggle('hidden');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('animate__fadeInDown');
+        });
+
+        let index = 0;
+
+        function showSlide(i) {
+            index = (i + slides.length) % slides.length; // permet de boucler
+            carousel.style.transform = `translateX(-${index * 100}%)`;
         }
+
+        prevBtn.addEventListener("click", () => showSlide(index - 1));
+        nextBtn.addEventListener("click", () => showSlide(index + 1));
     </script>
 </body>
 
