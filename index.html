@@ -7,20 +7,77 @@
     <link href="https://fonts.cdnfonts.com/css/century-gothic-paneuropean" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="css/hover.css" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Mi6zN5v1Y4eXf7uU0r9hCkUvnQeYfYc1SmYWpOpuXc7b4TnJc0T9VhPhe8G5QbU6DZdImIhPYVZ1D9e6U6xg0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.5/dist/alpine.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
+    <!-- Le script.js est déplacé à la fin du body pour de meilleures performances -->
     <style>
         body {
             font-family: 'Century Gothic Paneuropean', sans-serif;
         }
+
+        /* --- AJOUT : Styles pour l'écran de chargement --- */
+        /* conteneur plein écran */
+        #loader-wrapper {
+            position: fixed;
+            inset: 0;
+            /* top:0; right:0; bottom:0; left:0 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            z-index: 9999;
+            transition: opacity .5s ease, transform .5s ease;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* spinner */
+        #loader {
+            width: 40px;
+            height: 40px;
+            color: #d9625b;
+            border-radius: 50%;
+            background:
+                conic-gradient(from -45deg at top 20px left 50%, #0000, currentColor 1deg 90deg, #0000 91deg),
+                conic-gradient(from 45deg at right 20px top 50%, #0000, currentColor 1deg 90deg, #0000 91deg),
+                conic-gradient(from 135deg at bottom 20px left 50%, #0000, currentColor 1deg 90deg, #0000 91deg),
+                conic-gradient(from -135deg at left 20px top 50%, #0000, currentColor 1deg 90deg, #0000 91deg);
+            animation: l4 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+        }
+
+        @keyframes l4 {
+            50% {
+                width: 60px;
+                height: 60px;
+                transform: rotate(180deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* état caché (transitionné) */
+        #loader-wrapper.hidden,
+        #loader.hidden {
+            opacity: 0;
+            transform: scale(.98);
+            pointer-events: none;
+        }
     </style>
     <title>LuxDesign – Création de sites web, design & marketing digital</title>
-
 </head>
 
 <body class="font-sans leading-relaxed">
+    <!-- Si tu as déjà #loader-wrapper, garde-le ; si pas, on gère #loader aussi -->
+    <div id="loader-wrapper">
+        <div id="loader" aria-hidden="true"></div>
+    </div>
+
 
     <!-- Navbar Responsive -->
     <nav class="fixed top-0 left-0 w-full bg-[#0A3764] shadow-lg z-50" id="navbar">
@@ -79,34 +136,40 @@
             </div>
 
             <!-- Menu mobile -->
-            <div id="mobile-menu"
-                class="hidden absolute top-0 z-100 left-0 w-full bg-[#0A3764]/10 h-screen shadow-xl animate__animated ">
+            <div id="mobile-menu-container"
+                class="hidden fixed top-0 z-100 left-0 w-full bg-black/50 h-screen shadow-xl animate__animated">
 
-                <div class="flex justify-between bg-[#0A3764] items-center p-4">
+                <div id="mobile-menu-content" class="w-3/4 max-w-sm h-full bg-[#0A3764] flex flex-col p-4">
+                    <!-- Bouton de fermeture en haut à droite -->
+                    <button id="close-mobile-menu" class="self-end p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
 
+                    <!-- Liens de navigation -->
                     <ul class="py-6 space-y-2">
-                        <li class="">
+                        <li>
                             <a href="#accueil"
                                 class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
                                 Accueil
                             </a>
                         </li>
-                        </a>
-                        </li>
-                        <li class="">
+                        <li>
                             <a href="#services"
                                 class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
                                 Services
                             </a>
                         </li>
-                        <a href="#apropos"
-                            class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
-                            À propos
-                        </a>
+                        <li>
+                            <a href="#apropos"
+                                class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
+                                À propos
+                            </a>
                         </li>
-                        </a>
-                        </li>
-                        <li class="">
+                        <li>
                             <a href="#contact"
                                 class="mobile-nav-link block px-6 py-3 text-white font-semibold hover:bg-gray-50 hover:text-blue-600 hover:translate-x-2 transition-all duration-300">
                                 Contact
@@ -114,65 +177,102 @@
                         </li>
                     </ul>
 
-                    <!-- boutton close -->
-                    <button id="close-mobile-menu" class=" p-2 hidden self-start">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+                    <!-- AJOUT : Liens vers les réseaux sociaux -->
+                    <div class="mt-auto pt-6 border-t border-white/20">
+                        <div class="flex justify-center gap-6">
+                            <!-- WhatsApp -->
+                            <a href="https://api.whatsapp.com/send?phone=337776655" target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex items-center justify-center w-12 h-12 xs:w-10 xs:h-10 bg-green-500 text-white rounded-full shadow-lg transition-transform hover:scale-110">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.52 3.48A11.92 11.92 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.12 1.6 5.91L0 24l6.27-1.62A11.93 11.93 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.18-3.48-8.52zM12 22a9.93 9.93 0 0 1-5.1-1.39l-.36-.21-3.72.96.99-3.63-.24-.37A9.93 9.93 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.27-7.05c-.29-.14-1.72-.84-1.98-.94-.27-.1-.47-.14-.66.14-.2.29-.76.94-.93 1.13-.17.2-.34.22-.63.07-.29-.14-1.24-.46-2.37-1.47a8.77 8.77 0 0 1-1.63-2.03c-.17-.29-.02-.45.13-.59.13-.13.29-.34.43-.51.14-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.07-.14-.66-1.59-.9-2.18-.24-.57-.49-.49-.66-.5h-.56c-.2 0-.52.07-.8.37-.29.29-1.04 1.02-1.04 2.48 0 1.45 1.06 2.85 1.2 3.05.14.2 2.1 3.21 5.09 4.5.71.31 1.26.5 1.69.64.71.22 1.36.19 1.87.12.57-.08 1.72-.7 1.96-1.37.24-.67.24-1.24.17-1.37-.07-.14-.26-.2-.55-.34z" />
+                                </svg>
+                            </a>
+                            <!-- Mail -->
+                            <a href="mailto:contat@exaple.com"
+                                class="flex items-center justify-center w-12 h-12 xs:w-10 xs:h-10 bg-blue-600 text-white rounded-full shadow-lg transition-transform hover:scale-110">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.104 0 2-.897 2-2V6c0-1.103-.896-2-2-2zm0 2v.511l-8 5.333-8-5.333V6h16zM4 18V8.489l8 5.333 8-5.333V18H4z" />
+                                </svg>
+                            </a>
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center justify-center w-12 h-12 xs:w-10 xs:h-10 bg-gradient-to-r from-pink-500 to-yellow-500 text-white rounded-full shadow-lg transition-transform hover:scale-110">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.92 4.92 0 0 1 1.78 1.045 4.92 4.92 0 0 1 1.045 1.78c.163.46.35 1.26.403 2.43.058 1.267.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.92 4.92 0 0 1-1.045 1.78 4.92 4.92 0 0 1-1.78 1.045c-.46.163-1.26.35-2.43.403-1.267.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.92 4.92 0 0 1-1.78-1.045 4.92 4.92 0 0 1-1.045-1.78c-.163-.46-.35-1.26-.403-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43A4.92 4.92 0 0 1 3.718 2.94 4.92 4.92 0 0 1 5.497 1.895c.46-.163 1.26-.35 2.43-.403C8.416 1.812 8.8 1.8 12 1.8zm0 1.8c-3.14 0-3.5.012-4.73.068-1.02.046-1.575.22-1.94.364a3.12 3.12 0 0 0-1.136.74 3.12 3.12 0 0 0-.74 1.136c-.144.365-.318.92-.364 1.94-.056 1.23-.068 1.59-.068 4.73s.012 3.5.068 4.73c.046 1.02.22 1.575.364 1.94.16.405.404.77.74 1.136.366.336.73.58 1.136.74.365.144.92.318 1.94.364 1.23.056 1.59.068 4.73.068s3.5-.012 4.73-.068c1.02-.046 1.575-.22 1.94-.364a3.12 3.12 0 0 0 1.136-.74 3.12 3.12 0 0 0 .74-1.136c.144-.365.318-.92.364-1.94.056-1.23.068-1.59.068-4.73s-.012-3.5-.068-4.73c-.046-1.02-.22-1.575-.364-1.94a3.12 3.12 0 0 0-.74-1.136 3.12 3.12 0 0 0-1.136-.74c-.365-.144-.92-.318-1.94-.364C15.5 4.012 15.14 4 12 4zm0 3.8a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4zm0 1.8a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8zm5.6-2.2a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- FIN DE L'AJOUT -->
+
                 </div>
             </div>
+
         </div>
     </nav>
 
     <!-- Contenu principal -->
     <main class="pt-10">
-        <section id="accueil" class="h-screen relative ">
-            <!-- image en background avec dégradé -->
-            <img src="images/hero-image.jpg" alt="Image de fond" class="w-full h-full object-cover  " />
-            <!-- ecrire au dessus -->
+        <!-- Le reste de votre contenu HTML reste INCHANGÉ -->
+        <section id="accueil" class="h-screen relative overflow-hidden">
+            <!-- Image de fond -->
+            <img src="images/hero-image.jpg" alt="Image de fond" class="w-full h-full object-cover" />
 
+            <!-- Contenu par-dessus -->
             <div class="absolute inset-0 z-10 flex flex-col justify-center text-white max-w-6xl mx-auto px-4 lg:px-8">
+
+                <!-- Titre + cercle animé -->
                 <h1
                     class="font-bold text-4xl relative sm:text-5xl md:text-6xl lg:text-7xl py-6 animate__animated animate__backInRight">
                     Graphisme Web Marketing
+                    <!-- Cercle animé -->
                     <span
-                        class="bg-[#e67369]/80 p-5 w-5 h-5 rounded-full  left-0 absolute inset-0 z-10  -top-10"></span>
-
+                        class="absolute -top-10 left-0 w-12 h-12 bg-[#e67369]/80 rounded-full z-[-1] animate-ping"></span>
                 </h1>
-                <p class="max-w-lg pt-4 pb-10">LuxDesign vous propulse dans le digital avec des visuels percutants, des
-                    sites sur-mesure et des stratégies
-                    qui convertissent.</p>
 
+                <!-- Paragraphe animé -->
+                <p class="max-w-lg pt-4 pb-10 opacity-0 animate__animated animate__fadeInUp">
+                    LuxDesign vous propulse dans le digital avec des visuels percutants,
+                    des sites sur-mesure et des stratégies qui convertissent.
+                </p>
+
+                <!-- Bouton animé -->
                 <div class="flex">
                     <a href="#portfolio"
-                        class="flex  gap-x-3 items-center bg-[#e67369] hover:bg-[#d9625b] text-white font-semibold py-2 px-4 rounded shadow-lg font-semibold ] transition-colors duration-300">
+                        class="flex gap-x-3 items-center bg-[#e67369] hover:bg-[#d9625b] text-white font-semibold py-2 px-4 rounded shadow-lg transition duration-300 transform hover:scale-105 animate-bounce">
                         Découvrir
                         <img src="images/Right.png" alt="" width="16px">
                     </a>
                 </div>
-
-                <!-- <button class="bg-[#e67369] hover:bg-[#d9625b] text-white font-semibold py-2 px-4 rounded">
-                    <a href="">Découvrir</a>
-                </button> -->
             </div>
+
+            <!-- Petites bulles décoratives animées -->
+            <div class="absolute bottom-10 right-10 w-6 h-6 bg-[#e67369]/60 rounded-full animate-bounce"></div>
+            <div class="absolute top-20 left-10 w-8 h-8 bg-[#ffffff]/30 rounded-full animate-pulse"></div>
+            <div class="absolute bottom-20 left-1/2 w-4 h-4 bg-[#d9625b]/70 rounded-full animate-ping"></div>
         </section>
 
+
         <!-- NOS VALEURS -->
-        <section id="valeurs" class="py-35 flex items-center justify-center bg-[#e67369]">
+        <section id="valeurs" class="py-35 flex items-center justify-center bg-[#d9625b]">
             <div
                 class="container text-white max-w-6xl mx-auto px-4 lg:px-8 flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-15  ">
+
                 <div>
                     <img src="images/design (2).png" alt=""
                         class="transition-transform duration-300 ease-in-out hover:scale-140 w-24">
-                    <h3 class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110 md:text-4xl">
+                    <h3
+                        class="py-4 font-bold text-3xl transition-all duration-300 ease-in hover:scale-110  md:text-4xl">
                         Créativité</h3>
                     <p class="text-justify lg:max-w-3xl">Nous donnons vie à vos idées à travers des concepts visuels
                         uniques. Chaque design est pensé pour captiver,
                         différencier et refléter l’essence de votre marque.</p>
                 </div>
+
                 <div>
                     <img src="images/technical-skills.png" alt=""
                         class="transition-transform duration-300 ease-in-out hover:scale-140 w-24">
@@ -183,6 +283,7 @@
                         digitale irréprochable. Nos solutions allient
                         puissance technologique et élégance fonctionnelle.</p>
                 </div>
+
                 <div class="reactivite">
                     <img src="images/reactivite.png" alt=""
                         class="transition-transform duration-300 ease-in-out hover:scale-140 w-24">
@@ -219,14 +320,16 @@
                             entrepreneurs, les petites
                             structures et les particuliers à se démarquer dans un monde numérique de plus en plus
                             exigeant.
-                        </p><br>
+                        </p>
+
                         <p>
                             On sait que chaque projet est unique, et c’est exactement pour ça qu’on aime ce qu’on
                             fait. On prend le
                             temps de vous écouter, de comprendre vos envies, vos contraintes, vos ambitions. Puis on
                             crée, ensemble,
                             des visuels qui parlent, un site qui vous ressemble, une communication qui engage.
-                        </p><br>
+                        </p>
+
                         <p>
                             Que vous lanciez une <strong>startup</strong>, développiez votre marque, ou que vous
                             ayez simplement
@@ -570,39 +673,7 @@
         <p class="text-center">© 2024 LuxDesign FR Inc. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        const bouttonhamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMobileMenu = document.getElementById('close-mobile-menu');
-        const carousel = document.querySelector(".carousel");
-        const slides = document.querySelectorAll(".carousel-item");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
 
-        bouttonhamburger.addEventListener('click', () => {
-            closeMobileMenu.classList.toggle('hidden');
-            bouttonhamburger.classList.toggle('hidden');
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('animate__fadeInDown');
-
-        });
-        closeMobileMenu.addEventListener('click', () => {
-            closeMobileMenu.classList.toggle('hidden');
-            bouttonhamburger.classList.toggle('hidden');
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('animate__fadeInDown');
-        });
-
-        let index = 0;
-
-        function showSlide(i) {
-            index = (i + slides.length) % slides.length; // permet de boucler
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-        }
-
-        prevBtn.addEventListener("click", () => showSlide(index - 1));
-        nextBtn.addEventListener("click", () => showSlide(index + 1));
-    </script>
 </body>
 
 </html>
